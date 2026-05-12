@@ -1,10 +1,10 @@
 # Shoe Sort Puzzle
 
 ## Video Gameplay
-[Watch Gameplay](https://drive.google.com/file/d/162M7iQ1N563OK2zuQ86Z26sQD_AP8-Yg/view?usp=drive_link)
+[Watch Gameplay](https://youtube.com/shorts/KJ3jWdtoe6w?si=3nkqK__1wwZ6hFjB)
 
 ## APK
-[Download APK](link)
+[Download APK](https://github.com/Tang979/GDD_APK_Shoe_Sort_Puzzle/releases)
 
 ## Source Code
 [View Source Code](https://github.com/nguyenkhacnhat203-dev/Shoe_Sort_Puzzle)
@@ -100,17 +100,22 @@ Game Over khi thời gian đếm ngược kết thúc nhưng vẫn còn giày ch
 ---
 
 ## 8. Công việc tôi thực hiện
-- Xây dựng toàn bộ gameplay chính  
-- Đọc dữ liệu level từ JSON để khởi tạo màn chơi  
-- Khởi tạo box, shoe và random phân phối vào box/shelf  
-- Thiết kế ràng buộc random để tránh trạng thái khởi tạo không hợp lệ  
-- Xây dựng hệ thống drag & drop và tap-to-move  
-- Kiểm tra điều kiện match và xử lý loại bỏ giày  
-- Xây dựng hệ thống booster (Magnet, Shuffle, Add Box)  
-- Xây dựng hệ thống hint tự động sau mỗi khoảng thời gian  
-- Reset level và chuyển level mới  
-- Lưu tiến trình người chơi bằng PlayerPrefs  
-- Quản lý timer và logic bắt đầu đếm thời gian sau tương tác đầu tiên  
+- Xây dựng toàn bộ gameplay chính
+- Đọc dữ liệu level từ JSON để khởi tạo màn chơi
+- Khởi tạo box, shoe và random phân phối vào box/shelf
+- Thiết kế ràng buộc random để tránh trạng thái khởi tạo không hợp lệ
+- Xây dựng hệ thống drag & drop và tap-to-move
+- Kiểm tra điều kiện match và xử lý loại bỏ giày
+- Xây dựng hệ thống booster (Magnet, Shuffle, Add Box)
+- Xây dựng hệ thống hint tự động sau mỗi khoảng thời gian
+- Xây dựng Game State Manager để quản lý trạng thái gameplay và kiểm soát Timescale theo từng state
+- Giới hạn input chỉ hoạt động khi game ở trạng thái OnGame
+- Xây dựng Resource Manager quản lý Heart, Gold, Booster và thời gian hồi Heart
+- Xây dựng logic energy system: trừ Heart khi thua, replay, thoát giữa màn chơi và chặn tiếp tục chơi khi hết Heart
+- Xây dựng flow mua Heart và Booster thông qua popup xác nhận
+- Lưu tiến trình người chơi bằng PlayerPrefs
+- Reset level và chuyển level mới
+- Quản lý timer và logic bắt đầu đếm thời gian sau tương tác đầu tiên
 
 ---
 
@@ -149,6 +154,33 @@ Game Over khi thời gian đếm ngược kết thúc nhưng vẫn còn giày ch
 
 - Đảm bảo sau khi booster hoạt động vẫn giữ gameplay state hợp lệ.
 
+### 6. Quản lý trạng thái game và gameplay flow
+- Xây dựng Game State để quản lý các trạng thái:
+  - Menu
+  - OnGame
+  - Pause
+  - Win
+  - Lose
+  - Popup
+
+- Đồng bộ:
+  - Time.timeScale
+  - Input handling
+  - Popup flow
+
+- Đảm bảo gameplay chỉ hoạt động khi game ở trạng thái hợp lệ.
+
+### 7. Quản lý tài nguyên và energy system
+- Xây dựng hệ thống tài nguyên bao gồm:
+  - Heart
+  - Gold
+  - Booster inventory
+
+- Quản lý logic:
+  - Trừ Heart theo hành động gameplay
+  - Heart recovery theo thời gian
+  - Popup mua thêm tài nguyên khi không đủ điều kiện tiếp tục chơi
+
 ---
 
 ## 10. Tech Stack
@@ -157,8 +189,3 @@ Game Over khi thời gian đếm ngược kết thúc nhưng vẫn còn giày ch
 - JSON  
 - DOTween  
 - PlayerPrefs  
-
----
-
-## 11. Screenshots
-(Add images here)
